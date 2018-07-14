@@ -1,0 +1,217 @@
+﻿@model isp_management.Models.UserTB
+
+@{
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+<section id="main-content" class="">
+    <section class="wrapper">
+        <!-- page start-->
+        <!-- page start-->
+        <div class="row">
+
+            <div class="col-lg-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        User Create
+                    </header>
+                    <div class="panel-body">
+                        <div class="position-center">
+                            @using (Html.BeginForm("Create", "User", FormMethod.Post, new { @class = "form-horizontal" }))
+                            {
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">FullName<span style="color:red;">*</span></label>
+                                    <div class="col-md-8">
+                                        @Html.TextBoxFor(m => m.FullName, new { @Class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">UserName<span style="color:red;">*</span></label>
+                                    <div class="col-md-8">
+                                        @Html.TextBoxFor(m => m.UserName, new { @Class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Password<span style="color:red;">*</span></label>
+                                    <div class="col-md-8">
+                                        @Html.TextBoxFor(m => m.Password, new { @Class = "form-control",@type="password" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Email<span style="color:red;">*</span></label>
+                                    <div class="col-md-8">
+                                        @Html.TextBoxFor(m => m.Email, new { @Class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Mobile1<span style="color:red;">*</span></label>
+                                    <div class="col-md-8">
+                                        @Html.TextBoxFor(m => m.Mobile1, new { @Class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Mobile2<span style="color:red;">*</span></label>
+                                    <div class="col-md-8">
+                                        @Html.TextBoxFor(m => m.Mobile2, new { @Class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Gender<span style="color:red;">*</span></label>
+                                    <div class="col-md-8">
+                                        @Html.DropDownList("Gender_Id", (List<SelectListItem>)ViewData["GenderList"], "Select Gender", new { @class = "form-control editor-field" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">National Id<span style="color:red;">*</span></label>
+                                    <div class="col-md-8">
+                                        @Html.TextBoxFor(m => m.National_Id, new { @Class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Address<span style="color:red;">*</span></label>
+                                    <div class="col-md-8">
+                                        @Html.TextBoxFor(m => m.Address, new { @Class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Remarks<span style="color:red;">*</span></label>
+                                    <div class="col-md-8">
+                                        @Html.TextBoxFor(m => m.Remarks, new { @Class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Status<span style="color:red;">*</span></label>
+                                    <div class="col-md-8">
+                                        @Html.DropDownList("UserStatus_Id", (List<SelectListItem>)ViewData["StatusList"], "Select Status", new { @class = "form-control editor-field" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Type<span style="color:red;">*</span></label>
+                                    <div class="col-md-8">
+                                        @Html.DropDownList("UserType_Id", (List<SelectListItem>)ViewData["typeList"], "Select Type", new { @class = "form-control editor-field" })
+                                    </div>
+                                </div>
+                                @*<div class="form-group">
+                                        <label class="control-label col-md-3">Image</label>
+                                        <div class="col-md-5">
+                                            <input type="file" id="image" name="image" />
+                                        </div>
+                                    </div>*@
+                                <div class="form-group">
+                                    <div class="col-md-3"></div>
+
+                                    <input type="submit" value="Save" style="margin-left:15px" class="btn btn-info" />
+                                    <input type="button" value="Reset" id="reset" class="btn btn-info" />
+
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-3"></div>
+                                    <label id="msg" style="color:red;">@ViewData["msg"]</label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- page end-->
+    </section>
+</section>
+@section scripts{
+<script>
+    $(document).ready(function () {
+        $("form").submit(function (event) {
+            if ($("#FullName").val() == "") {
+                event.preventDefault();
+                swal("Failed", "FullName is required", "error").then(function () {
+                    $("#FullName").focus();
+                });
+            }
+
+            else if ($("#Mobile1").val() == "" || $("#Mobile1").val().length != 11) {
+                event.preventDefault();
+                swal("Failed", "Mobile1 is required", "error").then(function () {
+                    $("#Mobile1").focus();
+                });
+            }
+            else if ($("#Mobile2").val() == "" || $("#Mobile2").val().length != 11) {
+                event.preventDefault();
+                swal("Failed", "Mobile2 is required", "error").then(function () {
+                    $("#Mobile2").focus();
+                });
+            }
+            else if ($("#Gender_Id").val() == "") {
+                event.preventDefault();
+                swal("Failed", "Gender is required", "error").then(function () {
+                    $("#Gender_Id").focus();
+                });
+            }
+            else if ($("#Address").val() == "") {
+                event.preventDefault();
+                swal("Failed", "Address is required", "error").then(function () {
+                    $("#Address").focus();
+                });
+            }
+
+            else {
+                event.preventDefault();
+                $.ajax({
+                    url: "/User/Create",
+                    type: "POST",
+                    data:
+                   {
+                       
+                       FullName: $("#FullName").val(),
+                       UserName: $("#UserName").val(),
+                       Password: $("#Password").val(),
+                       Email: $("#Email").val(),
+                       Mobile1: $("#Mobile1").val(),
+                       Mobile2: $("#Mobile2").val(),
+                       Gender_Id: $("#Gender_Id").val(),
+                       National_Id: $("#National_Id").val(),
+                       Address: $("#Address").val(),
+                       Remarks: $("#Remarks").val(), 
+                       UserStatus_Id: $("#UserStatus_Id").val(), 
+                       UserType_Id: $("#UserType_Id").val(),
+
+                   },
+                    success: function (data) {
+                        if (data == "true")
+                            swal("Success", "Successfully Saved", "success");
+                        else
+                            swal("Failed", data, "error");
+                        resetfunction();
+                    },
+                    error: function (data) {
+                        alert(data)
+                    },
+
+                })
+            }
+        });
+        function resetfunction() {
+          $("#FullName").val(""),
+         $("#UserName").val(""),
+             $("#Password").val(""),
+            $("#Email").val(""),
+            $("#Mobile1").val(""),
+            $("#Mobile2").val(""),
+            $("#Gender_Id").val(""),
+           $("#National_Id").val(""),
+            $("#Address").val(""),
+             $("#Remarks").val(""),
+           $("#UserStatus_Id").val(""), 
+          $("#UserType_Id").val("")
+
+
+        }
+        //$("#reset").click(function () {
+
+        //    resetFunction();
+
+        //});
+    });
+</script>
+    }

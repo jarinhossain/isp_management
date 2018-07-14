@@ -1,0 +1,45 @@
+﻿@model isp_management.Models.Client
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Bill Create</title>
+</head>
+<body>
+    <div> 
+        <form>
+            @Html.TextBox("Customer_Code")
+            <input type="button" id="findCustomer" value="Find"/>
+            <label>Name</label> <label id="customer_name"></label>
+        </form>
+    </div>
+</body>
+</html>
+<script src="~/Script/jquery-1.12.4.js"></script>
+<script>
+    $(document).ready(function ()
+    {
+        $('#findCustomer').click(function () {
+            $.ajax({
+                url: '/Client/getClient',
+                type: 'GET',
+                data : {code: $("#Customer_Code").val()},
+                success: function (data) {
+                    //alert(data);
+                    $("#customer_name").text(data);
+                    console.log(data);
+                },
+                error: function (data) {
+                    alert(data);
+                    console.log(data);
+                }
+            })
+        })
+        
+    })
+</script>

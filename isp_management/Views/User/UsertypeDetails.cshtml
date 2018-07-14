@@ -1,0 +1,41 @@
+﻿@model isp_management.Models.UsertypeTB
+@{
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+<section id="main-content" class="">
+    <section class="wrapper">
+        <!-- page start-->
+        <!-- page start-->
+        <div class="row">
+
+            <div class="col-lg-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        Usertype Details
+                    </header>
+                    <div class="table-responsive panel col-md-8">
+                        <table class="table">
+                            <tbody>
+
+                                <tr>
+                                    <td class="text-primary text-right" width="30%">Name: </td>
+                                    <td style="font-weight:bold">@Model.Name</td>
+                                </tr>
+                              
+                            </tbody>
+                        </table>
+                        <div class="form-group" style="text-align:center">
+
+                            <a href="~/User/UsertypeEdit?id=@Model.Id" class="btn btn-success">Edit</a>
+                            <a href="~/User/UsertypeSearch" class="btn btn-info">Back</a>
+
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- page end-->
+    </section>
+</section>

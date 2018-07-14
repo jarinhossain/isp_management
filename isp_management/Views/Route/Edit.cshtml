@@ -1,0 +1,113 @@
+﻿@model isp_management.Models.RouteTB
+@{
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+<section id="main-content" class="">
+    <section class="wrapper">
+        <!-- page start-->
+        <!-- page start-->
+        <div class="row">
+
+            <div class="col-lg-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        Route Edit
+                    </header>
+                    <div class="panel-body">
+                        <div class="position-center">
+                            @using (Html.BeginForm("Edit", "Route", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                              
+                                @Html.HiddenFor(m => m.Id)
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Name<span style="color:red;">*</span></label>
+                                    <div class="col-md-8">
+                                        @Html.TextBoxFor(m => m.Name, new { @Class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Address<span style="color:red;">*</span></label>
+                                    <div class="col-md-8">
+                                        @Html.TextAreaFor(m => m.Address, new { @Class = "form-control", @rows = "3" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Post_Code<span style="color:red;">*</span></label>
+                                    <div class="col-md-8">
+                                        @Html.TextBoxFor(m => m.Post_Code, new { @Class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-3"></div>
+
+                                    <input type="submit" value="Update" style="margin-left:15px" class="btn btn-info" />
+                                    <input type="button" value="Reset" id="reset" class="btn btn-info" />
+
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-3"></div>
+                                    <label id="msg" style="color:red;">@ViewData["msg"]</label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- page end-->
+    </section>
+</section>
+<script>
+    $(document).ready(function () {
+        $("form").submit(function (event) {
+
+            if ($("#Name").val() == "") {
+                event.preventDefault();
+                swal("Failed", "Name is required", "error").then(function () {
+                    $("#Name").focus();
+                });
+            }
+            else if ($("#Address").val() == "") {
+                event.preventDefault();
+                swal("Failed", "Address is required", "error").then(function () {
+                    $("#Address").focus();
+                });
+            }
+
+            else {
+                event.preventDefault();
+                $.ajax({
+                    url: "/Route/Edit",
+                    type: "POST",
+                    data:
+                   {
+                       Id: $("#Id").val(),
+                       Name: $("#Name").val(),
+                       Address: $("#Address").val()
+                   },
+                    success: function (data) {
+                        if (data == "true")
+                            swal("Success", "Successfully Saved", "success");
+                        else
+                            swal("Failed", data, "error");
+                            resetfunction();
+                    },
+                    error: function (data) {
+                        alert(data)
+                    },
+
+                })
+            }
+        });
+        function resetfunction() {
+            $("#Name").val("");
+            $("#Address").val("");
+            $("#Post_Code").val("");
+
+        }
+
+    });
+</script>

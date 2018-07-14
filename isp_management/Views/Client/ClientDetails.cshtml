@@ -1,0 +1,118 @@
+﻿@model isp_management.Models.Client
+@{
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+<section id="main-content" class="">
+    <section class="wrapper">
+        <!-- page start-->
+        <!-- page start-->
+        <div class="row">
+
+            <div class="col-lg-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        Client Details
+                    </header>
+                    <div class="table-responsive panel col-md-8">
+                        <table class="table">
+                            <tbody>
+
+                                <tr>
+                                    <td class="text-primary text-right" width="30%">Code: </td>
+                                    <td style="font-weight:bold">@Model.Code</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-primary text-right">Name: </td>
+                                    <td style="font-weight:bold">@Model.Name</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-primary text-right"> Mobile1: </td>
+                                    <td style="font-weight:bold">@Model.Mobile1</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-primary text-right" width="30%"> Mobile2: </td>
+                                    <td style="font-weight:bold">@Model.Mobile2</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-primary text-right"> Email: </td>
+                                    <td style="font-weight:bold">@Model.Email</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-primary text-right"> Gender: </td>
+                                    <td style="font-weight:bold">@Model.Gender_Id</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-primary text-right"> Blood Group: </td>
+                                    <td style="font-weight:bold">@Model.Blood_Group_Id</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-primary text-right"> National Id: </td>
+                                    <td style="font-weight:bold">@Model.National_Id</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-primary text-right" width="30%"> Occupation: </td>
+                                    <td style="font-weight:bold">@Model.Occupation</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-primary text-right"> Address: </td>
+                                    <td style="font-weight:bold">@Model.Address</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-primary text-right">Monthly Amount: </td>
+                                    <td style="font-weight:bold">@Model.Monthly_Amount</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-primary text-right"> IP Address: </td>
+                                    <td style="font-weight:bold">@Model.IP_Address</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-primary text-right">Connection Date: </td>
+                                    <td style="font-weight:bold">@Model.Connection_Date</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-primary text-right"> Speed: </td>
+                                    <td style="font-weight:bold">@Model.Speed</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-primary text-right">Status: </td>
+                                    <td style="font-weight:bold">@Model.Status_Id</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-primary text-right">Route: </td>
+                                    <td style="font-weight:bold">@Model.Route</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-primary text-right">Package: </td>
+                                    <td style="font-weight:bold">@Model.Package</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-primary text-right">Discount: </td>
+                                    <td style="font-weight:bold">@Model.Discount</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        <div class="form-group" style="text-align:center">
+
+                            <a href="~/Client/Edit?id=@Model.Id" class="btn btn-success">Edit</a>
+                            <a href="~/Client/Search" class="btn btn-info">Back</a>
+
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- page end-->
+    </section>
+</section>

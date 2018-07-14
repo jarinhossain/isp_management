@@ -1,0 +1,86 @@
+﻿
+@model isp_management.Models.Account_Head_TB
+@{
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+<section id="main-content" class="">
+    <section class="wrapper">
+        <!-- page start-->
+        <!-- page start-->
+        <div class="row">
+
+            <div class="col-lg-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        AccountHead Create
+                    </header>
+                    <div class="panel-body">
+                        <div class="position-center">
+                            @using (Html.BeginForm("AccountHeadCreate", "Expense", FormMethod.Post, new { @class = "form-horizontal" }))
+                            {
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Name<span style="color:red;">*</span></label>
+                                    <div class="col-md-8">
+                                        @Html.TextBoxFor(m => m.Name, new { @Class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-3"></div>
+
+                                    <input type="submit" id="saveButton" value="Save" style="margin-left:15px" class="btn btn-info" />
+                                    <input type="button" value="Reset" id="reset" class="btn btn-info" />
+
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- page end-->
+    </section>
+</section>
+@section scripts{
+
+    <script>
+        $(document).ready(function () {
+            $("form").submit(function (event) {
+                if ($("#Name").val() == "") {
+                    event.preventDefault();
+                    swal("failed", "Name is required", "error").then(function () {
+                        $("#Name").focus();
+                    })
+                }
+                else {
+                    event.preventDefault();
+                    $.ajax({
+                        url: "/Expense/AccountHeadCreate",
+                        type: "POST",
+                        data: {
+                            Name:$("#Name").val(),
+
+                        },
+                        success: function (data) {
+                            if (data == "true") {
+                                swal("Success", "Successfully Saved", "success");
+                            }
+                            else {
+                                swal("failed", data, "error");
+                                resetfunction();
+                            }
+                        },
+                        error: function (data) {
+                        alert(data)
+                    },
+                    })
+                }
+
+            })
+            function resetfunction() {
+                $("#Name").val("")
+            }
+        })
+    </script>
+    }

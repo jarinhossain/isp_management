@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2216bce78f584228922399d0a83e5726" Name="Diagram1">
+        <EntityTypeShape EntityType="is_providerModel.Account_Head_TB" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="is_providerModel.Blood_Group_TB" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="is_providerModel.Client" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="is_providerModel.Client_Status" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="is_providerModel.ExpenseTB" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="is_providerModel.Gender" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="is_providerModel.PackageTB" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="is_providerModel.RouteTB" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="is_providerModel.StatusTB" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="is_providerModel.User_StatusTB" Width="1.5" PointX="3.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="is_providerModel.UserTB" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="is_providerModel.UsertypeTB" Width="1.5" PointX="3.75" PointY="11.75" IsExpanded="true" />
+        <AssociationConnector Association="is_providerModel.FK_ExpenseTB_Account_Head_TB" ManuallyRouted="false" />
+        <AssociationConnector Association="is_providerModel.FK_Client_Blood_Group_TB" ManuallyRouted="false" />
+        <AssociationConnector Association="is_providerModel.FK_Client_Client_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="is_providerModel.FK_Client_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="is_providerModel.FK_Client_PackageTB" ManuallyRouted="false" />
+        <AssociationConnector Association="is_providerModel.FK_Client_RouteTB" ManuallyRouted="false" />
+        <AssociationConnector Association="is_providerModel.FK_UserTB_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="is_providerModel.FK_UserTB_UserstatusTB" ManuallyRouted="false" />
+        <AssociationConnector Association="is_providerModel.FK_UserTB_UsertypeTB" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,759 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="is_providerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account_Head_TB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Blood_Group_TB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile1" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile2" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Gender_Id" Type="int" />
+          <Property Name="Blood_Group_Id" Type="int" />
+          <Property Name="National_Id" Type="varchar" MaxLength="50" />
+          <Property Name="Occupation" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="Monthly_Amount" Type="float" />
+          <Property Name="IP_Address" Type="varchar" MaxLength="50" />
+          <Property Name="Connection_Date" Type="varchar" MaxLength="50" />
+          <Property Name="Speed" Type="float" />
+          <Property Name="Status_Id" Type="int" />
+          <Property Name="Route" Type="int" />
+          <Property Name="Package" Type="int" />
+          <Property Name="Discount" Type="varchar" MaxLength="50" />
+          <Property Name="Image" Type="bit" />
+          <Property Name="Voter_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Client_Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ExpenseTB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ref" Type="varchar" MaxLength="50" />
+          <Property Name="AccountHead_Id" Type="int" />
+          <Property Name="Amount" Type="float" />
+          <Property Name="Amount_Details" Type="varchar" MaxLength="700" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PackageTB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="MBPS" Type="float" />
+          <Property Name="Taka" Type="float" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="RouteTB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
+          <Property Name="Post_Code" Type="int" />
+        </EntityType>
+        <EntityType Name="StatusTB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User_StatusTB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserTB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="50" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile1" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile2" Type="varchar" MaxLength="50" />
+          <Property Name="Gender_Id" Type="int" />
+          <Property Name="National_Id" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+          <Property Name="Image" Type="bit" />
+          <Property Name="Voter_Id_Image" Type="bit" />
+          <Property Name="UserStatus_Id" Type="int" />
+          <Property Name="UserType_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="UsertypeTB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Client_Blood_Group_TB">
+          <End Role="Blood_Group_TB" Type="Self.Blood_Group_TB" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blood_Group_TB">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="Blood_Group_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Client_Status">
+          <End Role="Client_Status" Type="Self.Client_Status" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client_Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="Status_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="Gender_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_PackageTB">
+          <End Role="PackageTB" Type="Self.PackageTB" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PackageTB">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="Package" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_RouteTB">
+          <End Role="RouteTB" Type="Self.RouteTB" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RouteTB">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="Route" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExpenseTB_Account_Head_TB">
+          <End Role="Account_Head_TB" Type="Self.Account_Head_TB" Multiplicity="0..1" />
+          <End Role="ExpenseTB" Type="Self.ExpenseTB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account_Head_TB">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExpenseTB">
+              <PropertyRef Name="AccountHead_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTB_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="UserTB" Type="Self.UserTB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTB">
+              <PropertyRef Name="Gender_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTB_UserstatusTB">
+          <End Role="User_StatusTB" Type="Self.User_StatusTB" Multiplicity="0..1" />
+          <End Role="UserTB" Type="Self.UserTB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_StatusTB">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTB">
+              <PropertyRef Name="UserStatus_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTB_UsertypeTB">
+          <End Role="UsertypeTB" Type="Self.UsertypeTB" Multiplicity="0..1" />
+          <End Role="UserTB" Type="Self.UserTB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsertypeTB">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTB">
+              <PropertyRef Name="UserType_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="is_providerModelStoreContainer">
+          <EntitySet Name="Account_Head_TB" EntityType="Self.Account_Head_TB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Blood_Group_TB" EntityType="Self.Blood_Group_TB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client_Status" EntityType="Self.Client_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpenseTB" EntityType="Self.ExpenseTB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PackageTB" EntityType="Self.PackageTB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RouteTB" EntityType="Self.RouteTB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusTB" EntityType="Self.StatusTB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_StatusTB" EntityType="Self.User_StatusTB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTB" EntityType="Self.UserTB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsertypeTB" EntityType="Self.UsertypeTB" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Client_Blood_Group_TB" Association="Self.FK_Client_Blood_Group_TB">
+            <End Role="Blood_Group_TB" EntitySet="Blood_Group_TB" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Client_Status" Association="Self.FK_Client_Client_Status">
+            <End Role="Client_Status" EntitySet="Client_Status" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Gender" Association="Self.FK_Client_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_PackageTB" Association="Self.FK_Client_PackageTB">
+            <End Role="PackageTB" EntitySet="PackageTB" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_RouteTB" Association="Self.FK_Client_RouteTB">
+            <End Role="RouteTB" EntitySet="RouteTB" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExpenseTB_Account_Head_TB" Association="Self.FK_ExpenseTB_Account_Head_TB">
+            <End Role="Account_Head_TB" EntitySet="Account_Head_TB" />
+            <End Role="ExpenseTB" EntitySet="ExpenseTB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTB_Gender" Association="Self.FK_UserTB_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="UserTB" EntitySet="UserTB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTB_UserstatusTB" Association="Self.FK_UserTB_UserstatusTB">
+            <End Role="User_StatusTB" EntitySet="User_StatusTB" />
+            <End Role="UserTB" EntitySet="UserTB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTB_UsertypeTB" Association="Self.FK_UserTB_UsertypeTB">
+            <End Role="UsertypeTB" EntitySet="UsertypeTB" />
+            <End Role="UserTB" EntitySet="UserTB" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="is_providerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account_Head_TB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ExpenseTBs" Relationship="Self.FK_ExpenseTB_Account_Head_TB" FromRole="Account_Head_TB" ToRole="ExpenseTB" />
+        </EntityType>
+        <EntityType Name="Blood_Group_TB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_Client_Blood_Group_TB" FromRole="Blood_Group_TB" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender_Id" Type="Int32" />
+          <Property Name="Blood_Group_Id" Type="Int32" />
+          <Property Name="National_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Occupation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Monthly_Amount" Type="Double" />
+          <Property Name="IP_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Connection_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Speed" Type="Double" />
+          <Property Name="Status_Id" Type="Int32" />
+          <Property Name="Route" Type="Int32" />
+          <Property Name="Package" Type="Int32" />
+          <Property Name="Discount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="Boolean" />
+          <Property Name="Voter_Id" Type="Int32" />
+          <NavigationProperty Name="Blood_Group_TB" Relationship="Self.FK_Client_Blood_Group_TB" FromRole="Client" ToRole="Blood_Group_TB" />
+          <NavigationProperty Name="Client_Status" Relationship="Self.FK_Client_Client_Status" FromRole="Client" ToRole="Client_Status" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_Client_Gender" FromRole="Client" ToRole="Gender" />
+          <NavigationProperty Name="PackageTB" Relationship="Self.FK_Client_PackageTB" FromRole="Client" ToRole="PackageTB" />
+          <NavigationProperty Name="RouteTB" Relationship="Self.FK_Client_RouteTB" FromRole="Client" ToRole="RouteTB" />
+        </EntityType>
+        <EntityType Name="Client_Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_Client_Client_Status" FromRole="Client_Status" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="ExpenseTB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountHead_Id" Type="Int32" />
+          <Property Name="Amount" Type="Double" />
+          <Property Name="Amount_Details" Type="String" MaxLength="700" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Account_Head_TB" Relationship="Self.FK_ExpenseTB_Account_Head_TB" FromRole="ExpenseTB" ToRole="Account_Head_TB" />
+          <Property Name="Ref" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_Client_Gender" FromRole="Gender" ToRole="Client" />
+          <NavigationProperty Name="UserTBs" Relationship="Self.FK_UserTB_Gender" FromRole="Gender" ToRole="UserTB" />
+        </EntityType>
+        <EntityType Name="PackageTB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MBPS" Type="Double" />
+          <Property Name="Taka" Type="Double" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_Client_PackageTB" FromRole="PackageTB" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="RouteTB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Post_Code" Type="Int32" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_Client_RouteTB" FromRole="RouteTB" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="StatusTB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User_StatusTB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserTBs" Relationship="Self.FK_UserTB_UserstatusTB" FromRole="User_StatusTB" ToRole="UserTB" />
+        </EntityType>
+        <EntityType Name="UserTB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender_Id" Type="Int32" />
+          <Property Name="National_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Boolean" />
+          <Property Name="Voter_Id_Image" Type="Boolean" />
+          <Property Name="UserStatus_Id" Type="Int32" />
+          <Property Name="UserType_Id" Type="Int32" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_UserTB_Gender" FromRole="UserTB" ToRole="Gender" />
+          <NavigationProperty Name="User_StatusTB" Relationship="Self.FK_UserTB_UserstatusTB" FromRole="UserTB" ToRole="User_StatusTB" />
+          <NavigationProperty Name="UsertypeTB" Relationship="Self.FK_UserTB_UsertypeTB" FromRole="UserTB" ToRole="UsertypeTB" />
+        </EntityType>
+        <EntityType Name="UsertypeTB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserTBs" Relationship="Self.FK_UserTB_UsertypeTB" FromRole="UsertypeTB" ToRole="UserTB" />
+        </EntityType>
+        <Association Name="FK_ExpenseTB_Account_Head_TB">
+          <End Role="Account_Head_TB" Type="Self.Account_Head_TB" Multiplicity="0..1" />
+          <End Role="ExpenseTB" Type="Self.ExpenseTB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account_Head_TB">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExpenseTB">
+              <PropertyRef Name="AccountHead_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Blood_Group_TB">
+          <End Role="Blood_Group_TB" Type="Self.Blood_Group_TB" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blood_Group_TB">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="Blood_Group_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Client_Status">
+          <End Role="Client_Status" Type="Self.Client_Status" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client_Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="Status_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="Gender_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_PackageTB">
+          <End Role="PackageTB" Type="Self.PackageTB" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PackageTB">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="Package" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_RouteTB">
+          <End Role="RouteTB" Type="Self.RouteTB" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RouteTB">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="Route" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTB_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="UserTB" Type="Self.UserTB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTB">
+              <PropertyRef Name="Gender_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTB_UserstatusTB">
+          <End Role="User_StatusTB" Type="Self.User_StatusTB" Multiplicity="0..1" />
+          <End Role="UserTB" Type="Self.UserTB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_StatusTB">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTB">
+              <PropertyRef Name="UserStatus_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTB_UsertypeTB">
+          <End Role="UsertypeTB" Type="Self.UsertypeTB" Multiplicity="0..1" />
+          <End Role="UserTB" Type="Self.UserTB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsertypeTB">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTB">
+              <PropertyRef Name="UserType_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Account_Head_TB" EntityType="Self.Account_Head_TB" />
+          <EntitySet Name="Blood_Group_TB" EntityType="Self.Blood_Group_TB" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="Client_Status" EntityType="Self.Client_Status" />
+          <EntitySet Name="ExpenseTBs" EntityType="Self.ExpenseTB" />
+          <EntitySet Name="Genders" EntityType="Self.Gender" />
+          <EntitySet Name="PackageTBs" EntityType="Self.PackageTB" />
+          <EntitySet Name="RouteTBs" EntityType="Self.RouteTB" />
+          <EntitySet Name="StatusTBs" EntityType="Self.StatusTB" />
+          <EntitySet Name="User_StatusTB" EntityType="Self.User_StatusTB" />
+          <EntitySet Name="UserTBs" EntityType="Self.UserTB" />
+          <EntitySet Name="UsertypeTBs" EntityType="Self.UsertypeTB" />
+          <AssociationSet Name="FK_ExpenseTB_Account_Head_TB" Association="Self.FK_ExpenseTB_Account_Head_TB">
+            <End Role="Account_Head_TB" EntitySet="Account_Head_TB" />
+            <End Role="ExpenseTB" EntitySet="ExpenseTBs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Blood_Group_TB" Association="Self.FK_Client_Blood_Group_TB">
+            <End Role="Blood_Group_TB" EntitySet="Blood_Group_TB" />
+            <End Role="Client" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Client_Status" Association="Self.FK_Client_Client_Status">
+            <End Role="Client_Status" EntitySet="Client_Status" />
+            <End Role="Client" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Gender" Association="Self.FK_Client_Gender">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="Client" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_PackageTB" Association="Self.FK_Client_PackageTB">
+            <End Role="PackageTB" EntitySet="PackageTBs" />
+            <End Role="Client" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_RouteTB" Association="Self.FK_Client_RouteTB">
+            <End Role="RouteTB" EntitySet="RouteTBs" />
+            <End Role="Client" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTB_Gender" Association="Self.FK_UserTB_Gender">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="UserTB" EntitySet="UserTBs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTB_UserstatusTB" Association="Self.FK_UserTB_UserstatusTB">
+            <End Role="User_StatusTB" EntitySet="User_StatusTB" />
+            <End Role="UserTB" EntitySet="UserTBs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTB_UsertypeTB" Association="Self.FK_UserTB_UsertypeTB">
+            <End Role="UsertypeTB" EntitySet="UsertypeTBs" />
+            <End Role="UserTB" EntitySet="UserTBs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="is_providerModelStoreContainer" CdmEntityContainer="DBContext">
+          <EntitySetMapping Name="Account_Head_TB">
+            <EntityTypeMapping TypeName="is_providerModel.Account_Head_TB">
+              <MappingFragment StoreEntitySet="Account_Head_TB">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Blood_Group_TB">
+            <EntityTypeMapping TypeName="is_providerModel.Blood_Group_TB">
+              <MappingFragment StoreEntitySet="Blood_Group_TB">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="is_providerModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mobile1" ColumnName="Mobile1" />
+                <ScalarProperty Name="Mobile2" ColumnName="Mobile2" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Gender_Id" ColumnName="Gender_Id" />
+                <ScalarProperty Name="Blood_Group_Id" ColumnName="Blood_Group_Id" />
+                <ScalarProperty Name="National_Id" ColumnName="National_Id" />
+                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Monthly_Amount" ColumnName="Monthly_Amount" />
+                <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
+                <ScalarProperty Name="Connection_Date" ColumnName="Connection_Date" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="Status_Id" ColumnName="Status_Id" />
+                <ScalarProperty Name="Route" ColumnName="Route" />
+                <ScalarProperty Name="Package" ColumnName="Package" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Voter_Id" ColumnName="Voter_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client_Status">
+            <EntityTypeMapping TypeName="is_providerModel.Client_Status">
+              <MappingFragment StoreEntitySet="Client_Status">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpenseTBs">
+            <EntityTypeMapping TypeName="is_providerModel.ExpenseTB">
+              <MappingFragment StoreEntitySet="ExpenseTB">
+                <ScalarProperty Name="Ref" ColumnName="Ref" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AccountHead_Id" ColumnName="AccountHead_Id" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Amount_Details" ColumnName="Amount_Details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="is_providerModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PackageTBs">
+            <EntityTypeMapping TypeName="is_providerModel.PackageTB">
+              <MappingFragment StoreEntitySet="PackageTB">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MBPS" ColumnName="MBPS" />
+                <ScalarProperty Name="Taka" ColumnName="Taka" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RouteTBs">
+            <EntityTypeMapping TypeName="is_providerModel.RouteTB">
+              <MappingFragment StoreEntitySet="RouteTB">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Post_Code" ColumnName="Post_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusTBs">
+            <EntityTypeMapping TypeName="is_providerModel.StatusTB">
+              <MappingFragment StoreEntitySet="StatusTB">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_StatusTB">
+            <EntityTypeMapping TypeName="is_providerModel.User_StatusTB">
+              <MappingFragment StoreEntitySet="User_StatusTB">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTBs">
+            <EntityTypeMapping TypeName="is_providerModel.UserTB">
+              <MappingFragment StoreEntitySet="UserTB">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile1" ColumnName="Mobile1" />
+                <ScalarProperty Name="Mobile2" ColumnName="Mobile2" />
+                <ScalarProperty Name="Gender_Id" ColumnName="Gender_Id" />
+                <ScalarProperty Name="National_Id" ColumnName="National_Id" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Voter_Id_Image" ColumnName="Voter_Id_Image" />
+                <ScalarProperty Name="UserStatus_Id" ColumnName="UserStatus_Id" />
+                <ScalarProperty Name="UserType_Id" ColumnName="UserType_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsertypeTBs">
+            <EntityTypeMapping TypeName="is_providerModel.UsertypeTB">
+              <MappingFragment StoreEntitySet="UsertypeTB">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

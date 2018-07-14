@@ -1,0 +1,96 @@
+﻿
+@model List<isp_management.Models.UsertypeTB>
+@{
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+<section id="main-content" class="">
+    <section class="wrapper">
+        <!-- page start-->
+        <!-- page start-->
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        Usertype Search
+                    </header>
+                    <div class="panel-body">
+                        <div class="adv-table">
+
+                            <table class="display table table-bordered table-striped" id="example">
+                                <thead>
+                                    <tr role="row">
+                                        <th>Option</th>
+                                        <th>Usertype</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (isp_management.Models.UsertypeTB user in (IEnumerable<isp_management.Models.UsertypeTB>)Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <a href="~/User/UsertypeEdit?id=@user.Id">Edit </a>
+                                                | <a href="~/User/UsertypeDetails?id=@user.Id">Details</a>
+                                            </td>
+                                            <td>@user.Name</td>
+                                        </tr>
+                                    }
+                                <tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- page end-->
+    </section>
+</section>
+@section contents{
+    <link rel="stylesheet" href="~/Content/dataTables.bootstrap.min.css">
+    @*<link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />*@
+    @*<link href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css" rel="stylesheet" />*@
+}
+@section scripts{
+
+
+    <script src="~/Script/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="~/Script/dataTables.bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            //$('#example tfoot th').each(function () {
+            //    var title = $(this).text();
+            //    $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+            //});
+
+            var table = $('#example').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+
+                    'excelHtml5',
+                    'pdfHtml5'
+                ]
+            });
+
+            //// Apply the search
+            //table.columns().every(function () {
+            //    var that = this;
+
+            //    $('input', this.footer()).on('keyup change', function () {
+            //        if (that.search() !== this.value) {
+            //            that
+            //                .search(this.value)
+            //                .draw();
+            //        }
+            //    });
+            //});
+        });
+    </script>
+
+}
